@@ -1,3 +1,7 @@
+import csv
+from pprint import pprint
+        
+
 # PART 1
 
 # class Cupcake:
@@ -47,7 +51,7 @@ class Cupcake(ABC):
         for sprinkle in args:
             self.sprinkles.append(sprinkle)
 
-    @abstractmethod
+    # @abstractmethod
     def calculate_price(self, quantity):
         return quantity * self.price
     
@@ -62,7 +66,7 @@ class Mini(Cupcake):
         self.sprinkles = []
 
 my_mini_cupcake = Mini("Vanilla", 2.25, "Vanilla bean", "Buttercream")
-print(my_mini_cupcake.name)
+# print(my_mini_cupcake.name)
 
 class Large(Cupcake):
     size = "large"
@@ -74,4 +78,56 @@ class Large(Cupcake):
         self.sprinkles = []
 
 my_big_cupcake = Large("Raspberry", 2.75, "Raspberry vanilla", "Buttercream")
-print(my_big_cupcake.size)
+# print(my_big_cupcake.size)
+
+my_regular_cupcake = Cupcake("Chocolate Delight", 2.50, "Dark and milk chocolate", "Milk chocolate", "Dark chocolate")
+
+another_cupcake = Large("Peanut Butter Surprise", 3, "Peanut butter", "Chocolate buttercream")
+
+another_cupcake.add_sprinkles("Peanuts", "Chocolate")
+
+# PART 3
+
+def read_csv_file(file):
+    with open(file) as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            pprint(row)
+
+# read_csv_file("sample.csv")
+
+cupcake_list = [
+    my_mini_cupcake,
+    my_regular_cupcake,
+    my_big_cupcake
+]
+
+def write_new_csv(file, cupcakes):
+    with open(file, "w", newline="\n") as csvfile:
+        fieldnames = ["size", "name", "price", "flavor", "frosting", "filling", "sprinkles"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+
+        for cupcake in cupcakes:
+            if hasattr(cupcake, "filling"):
+                writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "filling": cupcake.filling, "sprinkles": cupcake.sprinkles})
+            else:
+                writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "sprinkles": cupcake.sprinkles})
+
+
+write_new_csv("sample.csv", cupcake_list)
+
+
+def add_cupcake(file, cupcake):
+    with open(file, "a", newline="\n") as csvfile:
+        fieldnames = ["size", "name", "price", "flavor", "frosting", "filling", "sprinkles"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        if hasattr(cupcake, "filling"):
+            writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "filling": cupcake.filling, "sprinkles": cupcake.sprinkles})
+        else:
+            writer.writerow({"size": cupcake.size, "name": cupcake.name, "price": cupcake.price, "flavor": cupcake.flavor, "frosting": cupcake.frosting, "sprinkles": cupcake.sprinkles})
+
+add_cupcake("sample.csv", another_cupcake)
