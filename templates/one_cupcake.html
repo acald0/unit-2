@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Cupcake</title>
+</head>
+<body>
+    <h1>One cupcake page</h1>
+
+    {% for cupcake in cupcake %}
+        <h2>{{ cupcake["name"] }}</h2>
+        <h3>Price: {{ cupcake["price"] }}</h3>
+        <h3>Flavor: {{ cupcake["flavor"] }}</h3>
+        <h3>Frosting: {{ cupcake["frosting"] }}</h3>
+        <h3>Filling: {{ cupcake["filling"] }}</h3>
+        <h3>Sprinkles: {{ cupcake["sprinkles"] }}</h3>
+    {% endfor %}
+
+</body>
+</html>

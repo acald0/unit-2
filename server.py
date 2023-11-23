@@ -3,7 +3,7 @@ from flask import Flask, render_template, url_for, redirect
 app = Flask(__name__)
 
 
-from cupcakes import get_cupcakes, find_cupcake, add_cupcake_dictionary
+from cupcakes import get_cupcakes, find_cupcake, add_cupcake_dictionary, random_cupcake
 
 @app.route("/")
 def home():
@@ -11,7 +11,7 @@ def home():
 
 @app.route("/one_cupcake")
 def individual_cupcake():
-    return render_template("one_cupcake.html")
+    return render_template("one_cupcake.html", cupcake = random_cupcake("cupcakes.csv"))
 
 @app.route("/cupcakes")
 def all_cupcakes():

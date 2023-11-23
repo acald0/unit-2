@@ -1,6 +1,6 @@
 import csv
 from pprint import pprint
-        
+import random
 
 # PART 1
 
@@ -153,3 +153,13 @@ def add_cupcake_dictionary(file, cupcake):
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writerow(cupcake)
 
+
+
+def random_cupcake(file):
+    with open(file) as csvfile:
+        reader = csv.DictReader(csvfile)
+        reader = list(reader)
+        randomCupcake = random.sample(reader, 1)
+        # pprint(randomCupcake)
+        return randomCupcake
+    
