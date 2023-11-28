@@ -138,14 +138,20 @@ def get_cupcakes(file):
     with open(file) as csvfile:
         reader = csv.DictReader(csvfile)
         reader = list(reader)
+        # print(reader)
         return reader
     
 
 def find_cupcake(file, name):
     for cupcake in get_cupcakes(file):
-        if cupcake["name"] == name:
+        print(cupcake["name"])
+        print("Name: ")
+        print(name)
+        if cupcake['name'] == name:
+            print("Hello world")
             return cupcake
     return None
+
 
 def add_cupcake_dictionary(file, cupcake):
     with open(file, "a", newline="\n") as csvfile:

@@ -1,5 +1,5 @@
 size,name,price,flavor,frosting,filling,sprinkles
-Large, "Raspberry", 2.75, "Raspberry vanilla", "Buttercream", "Raspberry", []
-Regular, "Chocolate Delight", 2.50, "Dark and milk chocolate", "Milk chocolate", "Dark chocolate", ["Chocolate sprinkles"]
-Large, "Peanut Butter Surprise", 3, "Peanut butter", "Chocolate buttercream", "Peanut butter", []
-Mini, "Vanilla", 2.25, "Vanilla bean", "Buttercream", "None", ["White sprinkles"]
+Large,Raspberry, 2.75, "Raspberry vanilla", "Buttercream", "Raspberry", []
+Regular,Chocolate Delight, 2.50, "Dark and milk chocolate", "Milk chocolate", "Dark chocolate", ["Chocolate sprinkles"]
+Large,Peanut Butter Surprise, 3, "Peanut butter", "Chocolate buttercream", "Peanut butter", []
+Mini,Vanilla, 2.25, "Vanilla bean", "Buttercream", "None", ["White sprinkles"]
